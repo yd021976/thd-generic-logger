@@ -7,7 +7,7 @@ import { ThdAppLoggerAdapter } from './logger-sample/thd-sample-logger-adapter';
 import { ThdLevels } from './service/thd-levels.class';
 
 
-export function thd_loggerFactory(config: ThdAppLoggerServiceConfig): ThdAppLoggerService {
+export function ThdLoggerFactory(config: ThdAppLoggerServiceConfig): ThdAppLoggerService {
   var instance: ThdAppLoggerService = null;
   instance = new ThdAppLoggerService(config);
   return instance;
@@ -38,10 +38,10 @@ const thd_defaultAppLoggerConfig: ThdAppLoggerServiceConfig = {
   ],
   declarations: []
 })
-export class thd_AppLoggerModule {
+export class ThdAppLoggerModule {
   public static forRoot(config?: ThdAppLoggerServiceConfig): ModuleWithProviders {
     return {
-      ngModule: thd_AppLoggerModule,
+      ngModule: ThdAppLoggerModule,
       providers: [
         {
           provide: ThdAppLoggerConfigToken,
@@ -49,7 +49,7 @@ export class thd_AppLoggerModule {
         },
         {
           provide: ThdAppLoggerServiceToken,
-          useFactory: thd_loggerFactory,
+          useFactory: ThdLoggerFactory,
           multi: false,
           deps: [ThdAppLoggerConfigToken]
         }

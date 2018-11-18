@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { thd_AppLoggerModule } from 'thd-generic-logger-lib';
+import { ThdAppLoggerModule } from 'thd-generic-logger';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { thd_AppLoggerModule } from 'thd-generic-logger-lib';
   ],
   imports: [
     BrowserModule,
-    thd_AppLoggerModule.forRoot()
+    ThdAppLoggerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,11 +18,11 @@
       "dom"
     ],
     "paths": {
-      "thd-generic-logger-lib": [
-        "dist/thd-generic-logger-lib"
+      "thd-generic-logger": [
+        "dist/thd-generic-logger"
       ],
       "thd-generic-logger-lib/*": [
-        "dist/thd-generic-logger-lib/*"
+        "dist/thd-generic-logger/*"
       ]
     }
   }
