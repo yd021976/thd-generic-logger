@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/thd-generic-logger-lib",
+  "dest": "../../dist/thd-generic-logger",
   "lib": {
     "entryFile": "src/public_api.ts"
   }

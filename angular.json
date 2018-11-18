@@ -122,33 +122,33 @@
         }
       }
     },
-    "thd-generic-logger-lib": {
-      "root": "projects/thd-generic-logger-lib",
-      "sourceRoot": "projects/thd-generic-logger-lib/src",
+    "thd-generic-logger": {
+      "root": "projects/thd-generic-logger",
+      "sourceRoot": "projects/thd-generic-logger/src",
       "projectType": "library",
       "prefix": "thd",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/thd-generic-logger-lib/tsconfig.lib.json",
-            "project": "projects/thd-generic-logger-lib/ng-package.json"
+            "tsConfig": "projects/thd-generic-logger/tsconfig.lib.json",
+            "project": "projects/thd-generic-logger/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/thd-generic-logger-lib/src/test.ts",
-            "tsConfig": "projects/thd-generic-logger-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/thd-generic-logger-lib/karma.conf.js"
+            "main": "projects/thd-generic-logger/src/test.ts",
+            "tsConfig": "projects/thd-generic-logger/tsconfig.spec.json",
+            "karmaConfig": "projects/thd-generic-logger/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/thd-generic-logger-lib/tsconfig.lib.json",
-              "projects/thd-generic-logger-lib/tsconfig.spec.json"
+              "projects/thd-generic-logger/tsconfig.lib.json",
+              "projects/thd-generic-logger/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -158,5 +158,5 @@
       }
     }
   },
-  "defaultProject": "thd-generic-logger-app"
+  "defaultProject": "thd-generic-logger"
 }
