@@ -3,7 +3,7 @@ sudo: true
 node_js:
 - '10.13.0'
 
-script: ng t thd-generic-logger
+script: ng t thd-generic-logger --watch false -cc
 
 addons:
   chrome: stable
