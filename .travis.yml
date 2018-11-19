@@ -1,3 +1,15 @@
 language: node_js
+sudo: true
 node_js:
-  - "10.0.0"
+- '10.13.0'
+
+script: ng t thd-generic-logger
+
+addons:
+  chrome: stable
+
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
