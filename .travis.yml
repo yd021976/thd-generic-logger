@@ -3,6 +3,9 @@ sudo: true
 node_js:
 - '10.13.0'
 
+install:
+  - npm i -g codecov
+  
 script: ng t thd-generic-logger --watch false -cc
 
 addons:
