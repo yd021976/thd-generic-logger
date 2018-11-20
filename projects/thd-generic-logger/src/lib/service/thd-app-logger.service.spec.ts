@@ -38,6 +38,11 @@ describe('Service create logger adapter instances', () => {
         let newLogger = service.createLogger('test');
         expect(service["instances"]['test']).toBeDefined()
     })
+
+    it('Should create logger if not exist',()=>{
+        service.info('loggerToCreate',{message:'test',otherParams:[]});
+        expect(service['instances']['loggerToCreate']).not.toBeUndefined();
+    })
 })
 
 describe('Service main logger output all message types', () => {
