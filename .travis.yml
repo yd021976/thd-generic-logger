@@ -6,7 +6,7 @@ node_js:
 install:
   - npm i -g codecov && npm install
 
-script: ng t thd-generic-logger --watch false -cc
+script: ng t thd-generic-logger --watch=false --codeCoverage=true
 
 addons:
   chrome: stable
