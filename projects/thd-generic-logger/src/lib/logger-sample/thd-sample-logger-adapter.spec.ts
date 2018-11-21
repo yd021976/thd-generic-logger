@@ -2,6 +2,62 @@ import { ThdAppLoggerAdapter } from './thd-sample-logger-adapter';
 import { ThdLevels } from '../service/thd-levels.class';
 import { ThdAppLoggerConfig } from '../config/thd-app-logger-config.class';
 
+describe('Logger getters', () => {
+    let loggerAdapter: ThdAppLoggerAdapter = null;
+    let logger: any;
+    let config = {
+        color: "#000000",
+        isDeveloppementMode: true,
+        logLevels: [ThdLevels.DATA, ThdLevels.ERROR, ThdLevels.INFO, ThdLevels.WARN],
+        mute: false,
+        fixedWidth: 0
+    }
+    beforeEach(() => {
+        loggerAdapter = new ThdAppLoggerAdapter('test', config);
+        logger = loggerAdapter['logger'];
+    })
+    it('Should get logger config', () => {
+        let getConfig = loggerAdapter.getConfig();
+        expect(getConfig).toEqual(config)
+    })
+})
+describe('Logger methods', () => {
+    let loggerAdapter: ThdAppLoggerAdapter = null;
+    let logger: any;
+    let config = {
+        color: "#000000",
+        isDeveloppementMode: true,
+        logLevels: [ThdLevels.DATA, ThdLevels.ERROR, ThdLevels.INFO, ThdLevels.WARN],
+        mute: false,
+        fixedWidth: 0
+    }
+    beforeEach(() => {
+        loggerAdapter = new ThdAppLoggerAdapter('test', config);
+        logger = loggerAdapter['logger'];
+    })
+    it('Should call logger info method', () => {
+        spyOn(logger, 'info');
+        loggerAdapter.info({ message: 'test', otherParams: [] });
+        expect(logger.info).toHaveBeenCalled();
+    })
+    it('Should call logger data method', () => {
+        spyOn(logger, 'data');
+        loggerAdapter.data({ message: 'test', otherParams: [] });
+        expect(logger.data).toHaveBeenCalled();
+    })
+    it('Should call logger error method', () => {
+        spyOn(logger, 'error');
+        loggerAdapter.error({ message: 'test', otherParams: [] });
+        expect(logger.error).toHaveBeenCalled();
+    })
+    it('Should call logger warn method', () => {
+        spyOn(logger, 'warn');
+        loggerAdapter.warn({ message: 'test', otherParams: [] });
+        expect(logger.warn).toHaveBeenCalled();
+    })
+})
+
+
 describe('Logger adapter with developpement mode set to true', () => {
     let loggerAdapter: ThdAppLoggerAdapter = null;
     let logger: any;

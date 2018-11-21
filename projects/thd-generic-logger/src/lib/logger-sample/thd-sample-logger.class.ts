@@ -82,27 +82,28 @@ export class ThdSampleLogger {
      * @param moduleName 
     **/
     private display(name: string, data: any, incomming: ThdLevels) {
-        if (!contain(this.config.logLevels, incomming)) return;
-
+        if (!contain(this.allowed, incomming)) return;
+        if (this.isMuted) return;
+        
         if (incomming === ThdLevels.DATA) {
-            ThdSampleLogger.Display(name, data, this.name, this.color,
+            this.outputToConsole(name, data, this.name, this.color,
                 ThdLevels.DATA, this.fixedWidth);
         }
         if (incomming === ThdLevels.ERROR) {
-            ThdSampleLogger.Display(name, data, this.name, this.color,
+            this.outputToConsole(name, data, this.name, this.color,
                 ThdLevels.ERROR, this.fixedWidth);
         }
         if (incomming === ThdLevels.INFO) {
-            ThdSampleLogger.Display(name, data, this.name, this.color,
+            this.outputToConsole(name, data, this.name, this.color,
                 ThdLevels.INFO, this.fixedWidth);
         }
         if (incomming === ThdLevels.WARN) {
-            ThdSampleLogger.Display(name, data, this.name, this.color,
+            this.outputToConsole(name, data, this.name, this.color,
                 ThdLevels.WARN, this.fixedWidth);
         }
     }
 
-    static Display(message: string | any, params: any[], moduleName: string, moduleColor: string, level: ThdLevels, moduleWidth: number | undefined) {
+    public outputToConsole(message: string | any, params: any[], moduleName: string, moduleColor: string, level: ThdLevels, moduleWidth: number | undefined) {
         let color = 'gray';
         if (level === ThdLevels.INFO) color = 'deepskyblue';
         if (level === ThdLevels.ERROR) color = 'red';
