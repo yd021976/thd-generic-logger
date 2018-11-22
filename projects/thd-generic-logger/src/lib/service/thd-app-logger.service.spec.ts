@@ -29,7 +29,11 @@ describe('Service create logger adapter instances', () => {
     it('Should create logger adapter instance', () => {
         expect(service['instances'][service['serviceLoggerName']]).toBeDefined();
     })
-
+    it('Sould return existing instance', () => {
+        spyOn(service, "warn");
+        service.createLogger(service['serviceLoggerName']);
+        expect(service.warn).toHaveBeenCalled()
+    })
     it('Should logger adapter is instance of AppLoggerAdapter', () => {
         expect(service['instances'][service['serviceLoggerName']] instanceof ThdAppLoggerAdapter).toBeTruthy()
     })
@@ -39,8 +43,8 @@ describe('Service create logger adapter instances', () => {
         expect(service["instances"]['test']).toBeDefined()
     })
 
-    it('Should create logger if not exist',()=>{
-        service.info('loggerToCreate',{message:'test',otherParams:[]});
+    it('Should create logger if not exist', () => {
+        service.info('loggerToCreate', { message: 'test', otherParams: [] });
         expect(service['instances']['loggerToCreate']).not.toBeUndefined();
     })
 })
@@ -266,10 +270,10 @@ describe('Service configuration changes at runtime', () => {
         expect(loggerAdapter['logger'].info).not.toHaveBeenCalled()
     })
 
-    it('Should mute all except errors when setting developement mode to false',()=>{
+    it('Should mute all except errors when setting developement mode to false', () => {
         // Set new service config
-        let newConfig: ThdAppLoggerServiceConfig = { ...config}
-        newConfig.serviceConfig = { ...newConfig.serviceConfig, logLevels: [ThdLevels.INFO],isDeveloppementMode:false } // Ensure we log info level
+        let newConfig: ThdAppLoggerServiceConfig = { ...config }
+        newConfig.serviceConfig = { ...newConfig.serviceConfig, logLevels: [ThdLevels.INFO], isDeveloppementMode: false } // Ensure we log info level
         service.setConfig(newConfig);
         spyOn(loggerAdapter['logger'], 'info');
         service.info(null, { message: 'test', otherParams: [] });

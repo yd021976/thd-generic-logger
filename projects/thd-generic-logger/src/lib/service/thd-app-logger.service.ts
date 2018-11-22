@@ -2,7 +2,7 @@ import { Inject } from '@angular/core';
 import { ThdLevels } from './thd-levels.class';
 import { ThdAppLoggerServiceConfig, ThdloggerAdapterType, ThdAppLoggerConfig } from '../config/thd-app-logger-config.class';
 import { ThdAppLoggerConfigToken } from '../thd-app-logger-token';
-import { contain, getRandomColor } from '../utils/thd-app-logger-utils';
+import { contain } from '../utils/thd-app-logger-utils';
 import { ThdAppLoggerAdapter } from '../logger-sample/thd-sample-logger-adapter';
 import { ThdAppLoggerAdapterBase } from '../adapters/thd-app-logger-adapter-base.class';
 
