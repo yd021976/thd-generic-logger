@@ -23,9 +23,7 @@ export class ThdSampleLogger {
         this.developmentMode = config.isDeveloppementMode;
         this.allowed = config.logLevels;
     }
-    public getConfig(): ThdAppLoggerConfig {
-        return this.config;
-    }
+    
     public mute(state: boolean) {
         this.isMuted = state;
     }
@@ -43,8 +41,7 @@ export class ThdSampleLogger {
     }
 
     protected _data(message: ThdLoggerMessage) {
-        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING)
-            && !contain(this.allowed, ThdLevels.DATA)) return this;
+        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING) && !contain(this.allowed, ThdLevels.DATA)) return this;
         if (!this.developmentMode) return this;
         this.display(message.message, message.otherParams, ThdLevels.DATA);
         return this;
@@ -52,24 +49,21 @@ export class ThdSampleLogger {
 
 
     protected _error(message: ThdLoggerMessage) {
-        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING)
-            && !contain(this.allowed, ThdLevels.ERROR)) return this;
+        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING) && !contain(this.allowed, ThdLevels.ERROR)) return this;
         if (!this.developmentMode) return this;
         this.display(message.message, message.otherParams, ThdLevels.ERROR);
         return this;
     }
 
     protected _info(message: ThdLoggerMessage) {
-        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING)
-            && !contain(this.allowed, ThdLevels.INFO)) return this;
+        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING) && !contain(this.allowed, ThdLevels.INFO)) return this;
         if (!this.developmentMode) return this;
         this.display(message.message, message.otherParams, ThdLevels.INFO);
         return this;
     }
 
     protected _warn(message: ThdLoggerMessage) {
-        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING)
-            && !contain(this.allowed, ThdLevels.WARN)) return this;
+        if (this.allowed.length >= 1 && contain(this.allowed, ThdLevels.__NOTHING) && !contain(this.allowed, ThdLevels.WARN)) return this;
         if (!this.developmentMode) return this;
         this.display(message.message, message.otherParams, ThdLevels.WARN);
         return this;
@@ -84,7 +78,7 @@ export class ThdSampleLogger {
     private display(name: string, data: any, incomming: ThdLevels) {
         if (!contain(this.allowed, incomming)) return;
         if (this.isMuted) return;
-        
+
         if (incomming === ThdLevels.DATA) {
             this.outputToConsole(name, data, this.name, this.color,
                 ThdLevels.DATA, this.fixedWidth);
