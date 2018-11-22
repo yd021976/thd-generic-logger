@@ -141,6 +141,7 @@ export class ThdSampleLogger {
                 params.unshift(a2);
                 params.unshift(a1);
             } else {
+                /* istanbul ignore next */
                 let a1 = '%c ' + moduleName + ' ';
                 let a2 = 'background: ' + moduleColor + ';color:white; border: 1px solid ' + color + '; ';
                 params.push(message);
