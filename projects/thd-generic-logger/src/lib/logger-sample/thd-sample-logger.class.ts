@@ -103,6 +103,7 @@ export class ThdSampleLogger {
         if (level === ThdLevels.ERROR) color = 'red';
         if (level === ThdLevels.WARN) color = 'orange';
 
+        /* istanbul ignore if */
         if (moduleWidth) {
             const diff = moduleWidth - moduleName.length;
             if (diff > 0) {
@@ -114,6 +115,7 @@ export class ThdSampleLogger {
 
         const isEdgeOrIe8orAbove = (document['documentMode'] || /Edge/.test(navigator.userAgent));
 
+        /* istanbul ignore if */
         if (isEdgeOrIe8orAbove) {
             if (typeof message === 'string') {
                 let a1 = '[[ ' + moduleName + ' ]] ' + message + ' ';
@@ -133,6 +135,7 @@ export class ThdSampleLogger {
                 console.log.apply(console, params);
             }
         } else {
+            /* istanbul ignore else */
             if (typeof message === 'string') {
                 let a1 = '%c ' + moduleName + '  %c ' + message + ' ';
                 let a2 = 'background: ' + moduleColor + ';color:white; border: 1px solid ' + moduleColor + '; ';
@@ -141,7 +144,6 @@ export class ThdSampleLogger {
                 params.unshift(a2);
                 params.unshift(a1);
             } else {
-                /* istanbul ignore next */
                 let a1 = '%c ' + moduleName + ' ';
                 let a2 = 'background: ' + moduleColor + ';color:white; border: 1px solid ' + color + '; ';
                 params.push(message);

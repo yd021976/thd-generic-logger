@@ -107,6 +107,7 @@ export class ThdAppLoggerService<T extends ThdAppLoggerAdapterBase<any>=ThdAppLo
       case ThdLevels.ERROR:
         loggerMethod = "error";
         break;
+      /* istanbul ignore next */
       default:
         loggerMethod = "info";
         break;
